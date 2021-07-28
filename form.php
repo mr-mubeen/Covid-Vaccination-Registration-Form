@@ -64,6 +64,7 @@
 
 <?php
     if(isset($_POST['btn'])){
+//         getting values from input field through POST
           $nic = $_POST['nic'];
           $fname = $_POST['fname'];
           $address = $_POST['address'];
@@ -72,16 +73,22 @@
           $hospital_name = $_POST['hospital_name'];
           $date = $_POST['date'];
          
-    
+            
+//          connecting sql databse
           $conn = mysqli_connect('localhost' , 'root' , '' , 'vac') or die ('Connect Failed');
+        
+//         Insert query to database
           $sql = "INSERT INTO register (nic , fname ,address ,phone , vac_name , hospital_name , date ) VALUES ('{$nic}', '{$fname}' , '{$address}' , '{$phone}' , '{$vac_name}' , '{$hospital_name}' , '{$date}' )";
-          $result = mysqli_query($conn , $sql) or die ("Regsiter Failed");
+//        return if query is inserted or not
+        $result = mysqli_query($conn , $sql) or die ("Regsiter Failed");
 
-          echo "$result";
+    
           
+//         if querry is inserted 
           if($result)
           {
-              echo "<script>alert('Register Successfull....!!')</script>";
+//                if inderted it will show alert
+              echo "<script>alert('Register Successfull..!')</script>";
               
           }
           else {
@@ -90,10 +97,7 @@
           }
     
         }
-    
-    
-    
-    
+ 
     ?>
 </body>
 </html>
